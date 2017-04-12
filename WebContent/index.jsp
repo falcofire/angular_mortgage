@@ -35,7 +35,7 @@
 		<form class="main-form" ng-show="panel.isSelected(1)" ng-controller="MortgageController as formCtrl">
 			<!-- HOME DATA -->
 			<fieldset>
-				<legend><span class="glyphicon glyphicon-home icon"></span>Home Data</legend>
+				<legend><span class="glyphicon glyphicon-home icon"></span>House Data</legend>
 				<div class="row">
 					<div class="form-group col-md-4">
 						<label for="listPrice">List Price</label>

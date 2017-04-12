@@ -4,8 +4,8 @@
 	<link rel='stylesheet' href='css/bootstrap.min.css'>
 	<link rel='stylesheet' href='css/bootstrap-theme.min.css'>
 	<link rel='stylesheet' href='css/mortgage.css'>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/mortgage.js"></script>
 	

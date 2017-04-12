@@ -87,7 +87,7 @@
 					<div class="form-group col-md-4">
 						<label for="percentMonthlyTakehome">% of monthly takehome</label>
 						<input type="number" class="form-control" id="percentMonthlyTakehome" value="{{formCtrl.percentMonthlyTakehome}}" 
-							ng-model="percentMonthlyTakehome"/>
+							ng-model="formCtrl.percentMonthlyTakehome"/>
 					</div>
 				</div>
 			</fieldset>

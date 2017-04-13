@@ -8,7 +8,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/mortgage.js"></script>
-	
+	<meta name='viewport' content='user-scalable=no'>
 	<div ng-controller="PanelController as panel">
 		<ul class="nav nav-tabs">
 			<li role="presentation" ng-class="{ active:panel.isSelected(1) }"><a href ng-click="panel.selectTab(1)"><h4>Home Buying</h4></a></li>

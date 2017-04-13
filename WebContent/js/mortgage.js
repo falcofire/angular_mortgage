@@ -29,25 +29,13 @@
 		
 		this.monthlyPayment = (r*p*Math.pow((1+r),n))/(Math.pow((1+r),n)-1);
 		this.monthlyPayment = +this.monthlyPayment.toFixed(2);
+		dataService.monthlyPayment = this.monthlyPayment;
 		this.salary = this.takeHomePay * +this.frequency;
 		this.percentMonthlyTakehome = (this.monthlyPayment/(this.salary/12))*100;
 		this.percentMonthlyTakehome = +this.percentMonthlyTakehome.toFixed(1);
 		this.savingsMonths = +3;
 		this.savingsNeeded = this.monthlyPayment * this.savingsMonths;
 		this.savingsNeeded = +this.savingsNeeded.toFixed(2);
-		
-		this.calculateFields = function() {
-			this.takeHomePay = takeHomePay.value;
-			this.frequency = frequency.value;
-			this.listPrice = listPrice.value;
-			this.closingCosts = closingCosts.value;
-			this.loanAmount = loanAmount.value;
-			this.loanTerm = loanTerm.value;
-			this.monthlyPayment = monthlyPayment.value;
-			this.percentMonthlyTakehome = percentMonthlyTakehome.value;
-			this.savingsMonths = savingsMonths.value;
-			this.savingsNeeded = savingsNeeded.value;
-		};
 		
 		this.isSelected = function(inValue) {
 			return this.frequency === inValue;
@@ -69,14 +57,14 @@
 			var bottom = Math.pow((1+r),n)-1;
 			this.monthlyPayment = top/bottom;
 			this.monthlyPayment = +this.monthlyPayment.toFixed(2);
-			
+			dataService.monthlyPayment = this.monthlyPayment;
 			this.calcPercentMonthlyTakehome();
 			this.calcSavings();
 		};
 		
 		this.calcPercentMonthlyTakehome = function() {
 			this.salary = salary.value;
-			this.percentMonthlyTakehome = +((this.monthlyPayment/(this.salary/12))*100).toFixed(1);
+			this.percentMonthlyTakehome = +((dataService.monthlyPayment/(this.salary/12))*100).toFixed(1);
 			$('#percentMonthlyTakehome').val(this.percentMonthlyTakehome).trigger('input');
 		}
 		
@@ -198,10 +186,12 @@
 	  // private variable
 	  var _salary = 0;
 	  var _savingsFunctions;
+	  var _monthlyPayment = 0;
 
 	  // public API
 	  this.salary = _salary;
 	  this.savingsFunctions = _savingsFunctions;
+	  this.monthlyPayment = _monthlyPayment;
 	});
 	
 })();

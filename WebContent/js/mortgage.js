@@ -15,9 +15,9 @@
 	});
 	
 	app.controller('MortgageController', function($scope, dataService){
-		this.takeHomePay = +1949.78;
+		this.takeHomePay = +0;
 		this.frequency = +24;
-		this.listPrice = +500000;
+		this.listPrice = +0;
 		this.closingCosts = +0;
 		this.loanAmount = +this.listPrice * (1 + (this.closingCosts/100));
 		this.loanRate = +3.92;
@@ -76,7 +76,7 @@
 			dataService.salary = this.salary;
 			this.calcPercentMonthlyTakehome();
 			if (dataService.savingsFunctions !== null) {
-				dataService.savingsFunctions;
+				dataService.calcAccounts();
 			}
 		};
 		
@@ -90,9 +90,28 @@
 	});
 	
 	app.controller('SavingsController', function($scope, dataService){
-		
-		this.accounts = [
-			 { 
+		this.accounts = dataService.accounts;
+		this.calcAccounts = dataService.calcAccounts;
+		this.calcSpending = dataService.calcSpending;
+	});
+	
+	//Service to share salary between controllers
+	app.service('dataService', function() {
+
+	  // private variable
+	  var _salary = 0;
+	  var _savingsFunctions;
+	  var _monthlyPayment = 0;
+	  var _accounts;
+
+	  // public API
+	  this.salary = _salary;
+	  this.savingsFunctions = _savingsFunctions;
+	  this.monthlyPayment = _monthlyPayment;
+	  
+
+	  this.accounts = [
+            { 
 			 	name: 'Savings', 
 				balance: 4500,
 				percent: 'false',
@@ -130,7 +149,7 @@
 			for (var i = 0; i < this.accounts.length; i++) {
 				var S;
 				if (this.accounts[i].percent === 'true') {
-					var salary = dataService.salary;
+					var salary = this.salary;
 					S = salary * (this.accounts[i].annualContrib/100);
 				}
 				else {
@@ -149,10 +168,10 @@
 				
 				this.accounts[i].projection = V;
 			}
-			this.calcSpending();
+			this.calcSpending(this.accounts);
 		};
 		
-		this.calcSpending = function() {
+		this.calcSpending = function(accounts) {
 			var C = 0;
 			for (var i = 0; i < this.accounts.length; i++) {
 				var top = (this.accounts[i].rate/100) * this.accounts[i].projection;
@@ -168,7 +187,7 @@
 			for (var i = 0; i < this.accounts.length; i++) {
 				sum = sum + parseInt(this.accounts[i].projection);
 			}
-			ratio = sum / dataService.salary;
+			ratio = sum / this.salary;
 			this.siRatio = ratio.toFixed(3);
 		};
 		
@@ -176,22 +195,6 @@
 		this.calcAccounts();
 		this.calcSpending();
 		this.calcSIRatio();
-
-		dataService.savingsFunctions = this.calcAccounts;
-	});
-	
-	//Service to share salary between controllers
-	app.service('dataService', function() {
-
-	  // private variable
-	  var _salary = 0;
-	  var _savingsFunctions;
-	  var _monthlyPayment = 0;
-
-	  // public API
-	  this.salary = _salary;
-	  this.savingsFunctions = _savingsFunctions;
-	  this.monthlyPayment = _monthlyPayment;
 	});
 	
 })();

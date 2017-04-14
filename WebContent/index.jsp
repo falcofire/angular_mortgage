@@ -121,12 +121,12 @@
 						<input type="number" class="form-control" id="{{account.name}}Balance" value="{{account.balance}}" 
 							ng-change="savingsCtrl.calcAccounts()" ng-model="account.balance" />
 					</div>
-					<div class="form-group col-md-1">
+					<div class="form-group col-md-2">
 						<label for="percent">Type</label>
 						<select class="form-control" name="percent" id="percent" ng-change="savingsCtrl.calcAccounts()" 
 							ng-model="account.percent">
-							<option value='true'>%</option>
-							<option value='false'>$</option>
+							<option value='true'>% (of salary)</option>
+							<option value='false'>$ (fixed amount)</option>
 						</select>
 					</div>
 					<div class="form-group col-md-2">

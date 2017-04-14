@@ -18,7 +18,7 @@
 					<h5 class="col-md-3">Take Home Pay</h5>
 					<input type="hidden" id="salary" value="{{formCtrl.salary}}" ng-model="formCtrl.salary" />
 					<div class="form-group col-md-4">
-						<input type="number" class="form-control pull-left" id="takeHomePay" value="{{formCtrl.takeHomePay}}" 
+						<input class="form-control pull-left" id="takeHomePay" value="{{formCtrl.takeHomePay}}" 
 							ng-change="formCtrl.calcSalary()" ng-model="formCtrl.takeHomePay" style="float:left;"/>
 					</div>
 					<div class="form-group col-md-4">
@@ -41,13 +41,13 @@
 						<label for="listPrice">List Price</label>
 						<div class="input-group">
 							<span class="input-group-addon glyphicon glyphicon-usd"></span>
-							<input type="number" class="form-control" id="listPrice" value="{{formCtrl.listPrice}}"
+							<input class="form-control" id="listPrice" value="{{formCtrl.listPrice}}"
 								ng-keyup="formCtrl.calcLoanAmount()" ng-model="formCtrl.listPrice"/>
 						</div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="closingCosts">Closing Costs (%)</label>
-						<input type="number" class="form-control" id="closingCosts" value="{{formCtrl.closingCosts}}"
+						<input class="form-control" id="closingCosts" value="{{formCtrl.closingCosts}}"
 							ng-keyup="formCtrl.calcLoanAmount()" ng-model="formCtrl.closingCosts"/>
 					</div>
 				</div>
@@ -60,18 +60,18 @@
 						<label for="loanAmount">Loan amount</label>
 						<div class="input-group">
 							<span class="input-group-addon glyphicon glyphicon-usd"></span>
-							<input type="number" class="form-control" id="loanAmount" value="{{formCtrl.loanAmount}}"
+							<input class="form-control" id="loanAmount" value="{{formCtrl.loanAmount}}"
 								ng-keyup="formCtrl.calcMonthlyPayment()" ng-model="formCtrl.loanAmount"/>
 						</div>
 					</div>
 					<div class="form-group col-md-2">
 						<label for="loanRate">Rate (%)</label>
-						<input type="number" class="form-control" id="loanRate" value="{{formCtrl.loanRate}}"
+						<input class="form-control" id="loanRate" value="{{formCtrl.loanRate}}"
 							ng-keyup="formCtrl.calcMonthlyPayment()" ng-model="formCtrl.loanRate"/>
 					</div>
 					<div class="form-group col-md-2">
 						<label for="loanTerm">Term (years)</label>
-						<input type="number" class="form-control" id="loanTerm" value="{{formCtrl.loanTerm}}"
+						<input class="form-control" id="loanTerm" value="{{formCtrl.loanTerm}}"
 							ng-keyup="formCtrl.calcMonthlyPayment()" ng-model="formCtrl.loanTerm"/>
 					</div>
 				</div>
@@ -80,13 +80,13 @@
 						<label for="monthlyPayment">Monthly Payment</label>
 						<div class="input-group">
 							<span class="input-group-addon glyphicon glyphicon-usd"></span>
-							<input type="number" class="form-control" id="monthlyPayment" value="{{formCtrl.monthlyPayment}}"
+							<input class="form-control" id="monthlyPayment" value="{{formCtrl.monthlyPayment}}"
 								ng-model="formCtrl.monthlyPayment"/>
 						</div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="percentMonthlyTakehome">% of monthly takehome</label>
-						<input type="number" class="form-control" id="percentMonthlyTakehome" value="{{formCtrl.percentMonthlyTakehome}}" 
+						<input class="form-control" id="percentMonthlyTakehome" value="{{formCtrl.percentMonthlyTakehome}}" 
 							ng-model="formCtrl.percentMonthlyTakehome"/>
 					</div>
 				</div>
@@ -99,13 +99,13 @@
 						<label for="savingsNeeded">{{formCtrl.savingsMonths}} months of mortgage payments</label>
 						<div class="input-group">
 							<span class="input-group-addon glyphicon glyphicon-usd"></span>
-							<input type="number" class="form-control" id="savingsMonths" value="{{formCtrl.savingsNeeded}}"
+							<input class="form-control" id="savingsMonths" value="{{formCtrl.savingsNeeded}}"
 								ng-model="formCtrl.savingsNeeded"/>
 						</div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="savingsMonths">Months worth of savings</label>
-						<input type="number" class="form-control" id="savingsMonths" value="{{formCtrl.savingsMonths}}"
+						<input class="form-control" id="savingsMonths" value="{{formCtrl.savingsMonths}}"
 							ng-change="formCtrl.calcSavings()" ng-keyup="formCtrl.calcSavings()" ng-model="formCtrl.savingsMonths"/>
 					</div>
 				</div>
@@ -118,7 +118,7 @@
 				<div class="row" ng-repeat="account in savingsCtrl.accounts">
 					<div class="form-group col-md-2">
 						<label for="{{account.name}}Balance">{{account.name}} Account Initial</label>
-						<input type="number" class="form-control" id="{{account.name}}Balance" value="{{account.balance}}" 
+						<input class="form-control" id="{{account.name}}Balance" value="{{account.balance}}" 
 							ng-change="savingsCtrl.calcAccounts()" ng-model="account.balance" />
 					</div>
 					<div class="form-group col-md-2">
@@ -131,12 +131,12 @@
 					</div>
 					<div class="form-group col-md-2">
 						<label for="{{account.name}}Annually">Annual Contribution</label>
-						<input type="number" class="form-control" id="{{account.name}}Annually" value="{{account.annualContrib}}" 
+						<input class="form-control" id="{{account.name}}Annually" value="{{account.annualContrib}}" 
 							ng-change="savingsCtrl.calcAccounts()" ng-model="account.annualContrib"/>
 					</div>
 					<div class="form-group col-md-2">
 						<label for="{{account.name}}Return">Rate of Return</label>
-						<input type="number" class="form-control" id="{{account.name}}Return" value="{{account.rate}}" 
+						<input class="form-control" id="{{account.name}}Return" value="{{account.rate}}" 
 							ng-change="savingsCtrl.calcAccounts()" ng-model="account.rate"/>
 					</div>
 					<div class="form-group date col-md-2">
@@ -154,7 +154,7 @@
 				<legend>Spending Projections after Retirement</legend>
 				<div class="col-md-2">
 					<label for="sinceRetirement">Years Since Retirement</label>
-					<input type="number" class="form-control" id="sinceRetirement" name="sinceRetirement" value="{{savingsCtrl.sinceRetirement}}"
+					<input class="form-control" id="sinceRetirement" name="sinceRetirement" value="{{savingsCtrl.sinceRetirement}}"
 						ng-change="savingsCtrl.calcSpending()" ng-model="savingsCtrl.sinceRetirement" />
 				</div>
 				<div class="col-md-3">

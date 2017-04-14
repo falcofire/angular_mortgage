@@ -31,7 +31,7 @@
 		this.monthlyPayment = +this.monthlyPayment.toFixed(2);
 		dataService.monthlyPayment = this.monthlyPayment;
 		this.salary = this.takeHomePay * +this.frequency;
-		this.percentMonthlyTakehome = (this.monthlyPayment/(this.salary/12))*100;
+		this.percentMonthlyTakehome = 0;
 		this.percentMonthlyTakehome = +this.percentMonthlyTakehome.toFixed(1);
 		this.savingsMonths = +3;
 		this.savingsNeeded = this.monthlyPayment * this.savingsMonths;
@@ -65,6 +65,9 @@
 		this.calcPercentMonthlyTakehome = function() {
 			this.salary = salary.value;
 			this.percentMonthlyTakehome = +((dataService.monthlyPayment/(this.salary/12))*100).toFixed(1);
+			if (this.percentMonthlyTakehome = "NaN") {
+				this.percentMonthlyTakehome = 0;
+			}
 			$('#percentMonthlyTakehome').val(this.percentMonthlyTakehome).trigger('input');
 		}
 		

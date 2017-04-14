@@ -65,7 +65,7 @@
 		this.calcPercentMonthlyTakehome = function() {
 			this.salary = salary.value;
 			this.percentMonthlyTakehome = +((dataService.monthlyPayment/(this.salary/12))*100).toFixed(1);
-			if (this.percentMonthlyTakehome = "NaN") {
+			if (isNaN(this.percentMonthlyTakehome)) {
 				this.percentMonthlyTakehome = 0;
 			}
 			$('#percentMonthlyTakehome').val(this.percentMonthlyTakehome).trigger('input');

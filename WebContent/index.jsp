@@ -12,7 +12,7 @@
 	<div ng-controller="PanelController as panel">
 		<ul class="nav nav-tabs">
 			<li role="presentation" ng-class="{ active:panel.isSelected(1) }"><a href ng-click="panel.selectTab(1)"><h4>Home Buying</h4></a></li>
-			<li role="presentation" ng-class="{ active:panel.isSelected(2) }"><a href ng-click="panel.selectTab(2)"><h4>Savings Projections</h4></a></li>
+			<!-- <li role="presentation" ng-class="{ active:panel.isSelected(2) }"><a href ng-click="panel.selectTab(2)"><h4>Savings Projections</h4></a></li> -->
 			<form class="pull-right" ng-controller="MortgageController as formCtrl">
 				<div class="row" style="padding-top:5px;">
 					<h5 class="col-md-3">Take Home Pay</h5>

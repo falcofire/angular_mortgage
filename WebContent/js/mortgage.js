@@ -1,3 +1,11 @@
+$(document).ready(function() {
+	$('#takeHomePay').on('touchstart click', function() {
+		if (this.value == 0) {
+			this.value = null;
+		}
+	});
+});
+
 (function() {
 	
 	var app = angular.module('mortgage', []);
@@ -148,7 +156,6 @@
 		this.siRatio = 0;
 		
 		this.calcAccounts = function(){
-			console.log("Calculating savings functions.");
 			for (var i = 0; i < this.accounts.length; i++) {
 				var S;
 				if (this.accounts[i].percent === 'true') {

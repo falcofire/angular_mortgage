@@ -1,7 +1,13 @@
 $(document).ready(function() {
-	$('#takeHomePay').on('touchstart click', function() {
+	$(':input[type="number"]').on('touchstart click', function() {
 		if (this.value == 0) {
 			this.value = null;
+		}
+	});
+	
+	$(':input[type="number"]').focusout(function() {
+		if (this.value == "") {
+			this.value = 0;
 		}
 	});
 });

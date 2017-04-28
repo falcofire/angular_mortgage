@@ -1,6 +1,9 @@
 .fieldArea {
 	width:80%;
 }
+.glyphicon {
+	top: 0px;
+}
 .icon {
 	padding-right: 10px;
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="mortgage">
 	<title>Personal Finance</title>
+	<link rel="shortcut icon" href="http://ssl.gstatic.com/docs/spreadsheets/favicon_jfk2.png" />
 	<link rel='stylesheet' href='css/bootstrap.min.css'>
 	<link rel='stylesheet' href='css/bootstrap-theme.min.css'>
 	<link rel='stylesheet' href='css/mortgage.css'>

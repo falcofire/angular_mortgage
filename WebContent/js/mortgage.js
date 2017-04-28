@@ -77,8 +77,7 @@ $(document).ready(function() {
 		};
 		
 		this.calcPercentMonthlyTakehome = function() {
-			this.salary = salary.value;
-			this.percentMonthlyTakehome = +((dataService.monthlyPayment/(this.salary/12))*100).toFixed(1);
+			this.percentMonthlyTakehome = +((dataService.monthlyPayment/(dataService.salary/12))*100).toFixed(1);
 			if (isNaN(this.percentMonthlyTakehome)) {
 				this.percentMonthlyTakehome = 0;
 			}
@@ -89,7 +88,6 @@ $(document).ready(function() {
 			var check = this.takeHomePay;
 			var freq = this.frequency;
 			this.salary = +check * freq;
-			$('#salary').val(this.salary).trigger('input');
 			dataService.salary = this.salary;
 			this.calcPercentMonthlyTakehome();
 			if (dataService.savingsFunctions !== null) {
@@ -112,7 +110,7 @@ $(document).ready(function() {
 		this.calcSpending = dataService.calcSpending;
 	});
 	
-	//Service to share salary between controllers
+	//Service to share data between controllers
 	app.service('dataService', function() {
 
 	  // private variable

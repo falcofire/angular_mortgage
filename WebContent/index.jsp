@@ -13,9 +13,9 @@
 		<ul class="nav nav-tabs">
 			<li role="presentation" ng-class="{ active:panel.isSelected(1) }"><a href ng-click="panel.selectTab(1)"><h4>Home Buying</h4></a></li>
 			<!-- <li role="presentation" ng-class="{ active:panel.isSelected(2) }"><a href ng-click="panel.selectTab(2)"><h4>Savings Projections</h4></a></li> -->
-			<div class="pull-right" ng-controller="MortgageController as formCtrl">
+			<div class="pull-right hidden-xs" ng-controller="MortgageController as formCtrl">
 				<div class="row" style="padding-top:5px;">
-					<h5 class="pull-left hidden-xs">Take Home Pay</h5>
+					<h5 class="pull-left">Take Home Pay</h5>
 					<input type="hidden" id="salary" value="{{formCtrl.salary}}" ng-model="formCtrl.salary" />
 					<div class="form-group col-md-4">
 						<input type="number" class="form-control" id="takeHomePay"
@@ -33,6 +33,22 @@
 			</div>
 		</ul>
 		<form class="main-form container-fluid" ng-show="panel.isSelected(1)" ng-controller="MortgageController as formCtrl">
+			<div class="row hidden-lg" style="padding-top:5px;">
+				<h5 class="pull-left">Take Home Pay</h5>
+				<input type="hidden" id="salary" value="{{formCtrl.salary}}" ng-model="formCtrl.salary" />
+				<div class="form-group col-md-4">
+					<input type="number" class="form-control" id="takeHomePay"
+						ng-change="formCtrl.calcSalary()" ng-model="formCtrl.takeHomePay"/>
+				</div>
+				<div class="form-group col-md-4">
+					<select class="form-control" id="frequency" ng-change="formCtrl.calcSalary()" ng-model="formCtrl.frequency">
+						<option value="1" ng-selected="formCtrl.frequency === 1">Annually</option>
+						<option value="12" ng-selected="formCtrl.frequency === 12">Monthly</option>
+						<option value="24" ng-selected="formCtrl.frequency === 24">Semi-monthly</option>
+						<option value="52" ng-selected="formCtrl.frequency === 52">Weekly</option>
+					</select>
+				</div>
+			</div>
 			<!-- HOME DATA -->
 			<fieldset>
 				<legend><span class="glyphicon glyphicon-home icon"></span>House Data</legend>
@@ -42,13 +58,13 @@
 						<div class="input-group">
 							<span class="input-group-addon glyphicon glyphicon-usd"></span>
 							<input type="number" class="form-control" id="listPrice"
-								ng-keyup="formCtrl.calcLoanAmount()" ng-model="formCtrl.listPrice"/>
+								ng-change="formCtrl.calcLoanAmount()" ng-model="formCtrl.listPrice"/>
 						</div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="closingCosts">Closing Costs (%)</label>
 						<input type="number" class="form-control" id="closingCosts"
-							ng-keyup="formCtrl.calcLoanAmount()" ng-model="formCtrl.closingCosts"/>
+							ng-change="formCtrl.calcLoanAmount()" ng-model="formCtrl.closingCosts"/>
 					</div>
 				</div>
 			</fieldset>
@@ -61,18 +77,18 @@
 						<div class="input-group pad-under">
 							<span class="input-group-addon glyphicon glyphicon-usd"></span>
 							<input type="number" class="form-control" id="loanAmount"
-								ng-keyup="formCtrl.calcMonthlyPayment()" ng-model="formCtrl.loanAmount"/>
+								ng-change="formCtrl.calcMonthlyPayment()" ng-model="formCtrl.loanAmount"/>
 						</div>
 					</div>
 					<div class="form-group col-md-2">
 						<label for="loanRate">Rate (%)</label>
 						<input type="number" class="form-control" id="loanRate"
-							ng-keyup="formCtrl.calcMonthlyPayment()" ng-model="formCtrl.loanRate"/>
+							ng-change="formCtrl.calcMonthlyPayment()" ng-model="formCtrl.loanRate"/>
 					</div>
 					<div class="form-group col-md-2">
 						<label for="loanTerm">Term (years)</label>
 						<input type="number" class="form-control" id="loanTerm"
-							ng-keyup="formCtrl.calcMonthlyPayment()" ng-model="formCtrl.loanTerm"/>
+							ng-change="formCtrl.calcMonthlyPayment()" ng-model="formCtrl.loanTerm"/>
 					</div>
 				</div>
 				<div class="row">
@@ -81,13 +97,13 @@
 						<div class="input-group">
 							<span class="input-group-addon glyphicon glyphicon-usd"></span>
 							<input type="number" class="form-control" id="monthlyPayment"
-								ng-model="formCtrl.monthlyPayment"/>
+								ng-model="formCtrl.monthlyPayment" readonly/>
 						</div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="percentMonthlyTakehome">% of monthly takehome</label>
 						<input type="number" class="form-control" id="percentMonthlyTakehome" 
-							ng-model="formCtrl.percentMonthlyTakehome"/>
+							ng-model="formCtrl.percentMonthlyTakehome" readonly/>
 					</div>
 				</div>
 			</fieldset>
@@ -106,7 +122,7 @@
 					<div class="form-group col-md-4">
 						<label for="savingsMonths">Months worth of savings</label>
 						<input type="number" class="form-control" id="savingsMonths"
-							ng-change="formCtrl.calcSavings()" ng-keyup="formCtrl.calcSavings()" ng-model="formCtrl.savingsMonths"/>
+							ng-change="formCtrl.calcSavings()" ng-model="formCtrl.savingsMonths"/>
 					</div>
 				</div>
 			</fieldset>
